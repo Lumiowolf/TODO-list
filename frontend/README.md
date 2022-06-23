@@ -1,6 +1,6 @@
-````## Description
+## Description
 
-Backend for TODO-list application
+Frontend for TODO-list application
 
 ## Installation
 
@@ -14,10 +14,6 @@ $ npm install
 # development
 $ npm run start
 
-# watch mode
-$ npm run start:dev
-
 # production mode
-$ npm run start:prod
+$ npm run build
 ```
-````
