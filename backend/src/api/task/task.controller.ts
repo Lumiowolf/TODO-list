@@ -1,9 +1,9 @@
-import {Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe} from '@nestjs/common';
+import {Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, ParseBoolPipe} from '@nestjs/common';
 import { TaskService } from './task.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 
-@Controller('task')
+@Controller('api/task')
 export class TaskController {
     constructor(private readonly taskService: TaskService) {}
 
@@ -37,15 +37,15 @@ export class TaskController {
         return this.taskService.update(id, updateTaskDto);
     }
 
-    @Patch("set-done/:id")
-    setDone(@Param('id', ParseUUIDPipe) id: string) {
-        return this.taskService.setDone(id, true);
+    @Patch("set-done/:id/:status")
+    setDone(@Param('id', ParseUUIDPipe) id: string, @Param('status', ParseBoolPipe) status: boolean) {
+        return this.taskService.setDone(id, status);
     }
 
-    @Patch("set-undone/:id")
-    setUndone(@Param('id', ParseUUIDPipe) id: string) {
-        return this.taskService.setDone(id, false);
-    }
+    // @Patch("set-undone/:id")
+    // setUndone(@Param('id', ParseUUIDPipe) id: string) {
+    //     return this.taskService.setDone(id, false);
+    // }
 
     @Delete(':id')
     remove(@Param('id', ParseUUIDPipe) id: string) {

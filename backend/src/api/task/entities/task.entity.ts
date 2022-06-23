@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from "typeorm";
+import {Column, Entity, ManyToOne, PrimaryGeneratedColumn, CreateDateColumn, OneToMany} from "typeorm";
+import {Category} from "../../category/entities/category.entity";
 
 @Entity()
 export class Task {
@@ -8,22 +9,25 @@ export class Task {
     @Column()
     name: string;
 
-    @Column("timestamp without time zone", { default: null} )
+    @Column("timestamp without time zone", {default: null})
     deadline?: Date;
 
-    @Column({ default: null })
+    @Column({default: null})
     description?: string;
 
-    @Column("timestamp without time zone", { default: null, array: true })
+    @Column("timestamp without time zone", {default: null, array: true})
     reminders?: Date[];
 
-    @Column({ default: null })
+    @Column({default: null})
     priority?: number;
 
-    @Column({ default: null })
+    @Column({default: null})
+    categoryName?: string;
+
+    @ManyToOne(() => Category, category => category.name, {onDelete: "SET NULL"})
     category?: string;
 
-    @Column({ default: null })
+    @Column({default: null})
     parentTaskId?: string;
 
     @OneToMany(() => Task, task => task.parentTask)
@@ -32,7 +36,7 @@ export class Task {
     @ManyToOne(() => Task, task => task.childTasks)
     parentTask?: string;
 
-    @Column({ default: false })
+    @Column({default: false})
     done: boolean;
 
     @CreateDateColumn()

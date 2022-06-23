@@ -1,23 +1,29 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import {HttpException, HttpStatus, Injectable} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
 import {IsNull, Repository} from 'typeorm';
-import { CreateTaskDto } from './dto/create-task.dto';
-import { UpdateTaskDto } from './dto/update-task.dto';
-import { Task } from './entities/task.entity';
+import {CreateTaskDto} from './dto/create-task.dto';
+import {UpdateTaskDto} from './dto/update-task.dto';
+import {Task} from './entities/task.entity';
+import {CategoryService} from "../category/category.service";
 
 @Injectable()
 export class TaskService {
     constructor(
         @InjectRepository(Task)
         private tasksRepository: Repository<Task>,
-    ) {}
+        private readonly categoryService: CategoryService
+    ) {
+    }
 
     async create(createTaskDto: CreateTaskDto): Promise<void> {
+        if (await this.categoryService.findOne(createTaskDto.category).then(result => result === null)) {
+            throw new HttpException('Unknown category', HttpStatus.BAD_REQUEST);
+        }
         await this.tasksRepository.insert(createTaskDto);
     }
 
     findAll(): Promise<Task[]> {
-        return this.tasksRepository.find();
+        return this.tasksRepository.find({order: {creationDate: "DESC"}});
     }
 
     findMainTasks() {
