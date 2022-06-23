@@ -1,4 +1,4 @@
-````## Description
+## Description
 
 Backend for TODO-list application
 
@@ -7,6 +7,14 @@ Backend for TODO-list application
 ```bash
 $ npm install
 ```
+
+For application to work you must setup PostreSQL database.
+Once it's done you have to fill src/common/envs/.env file with corresponing values describing connection to your database. Those are:
+* host name
+* port number
+* username
+* password
+* database name
 
 ## Running the app
 
@@ -20,4 +28,3 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
-````
