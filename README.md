@@ -68,7 +68,7 @@ Poniżej zrzuty ekranu z przykładowego wykorzystania
 *Po usunięciu kategorii, zadania z nią powiązane tracą przypisanie do kategorii*
 
 ![](use-example/category_studia.png)
-*Wyświetlenie zadań z wybranej kategorii
+*Wyświetlenie zadań z wybranej kategorii*
 
 4. Zadania
 
