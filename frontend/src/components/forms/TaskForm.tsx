@@ -87,7 +87,7 @@ export const TaskForm = ({initialValues, onSubmit, onCancel}: TaskFormProps) => 
                     clearable
                     label={"Deadline date"}
                     style={{minWidth: isMobile ? 220 : 300}}
-                    value={form.values.deadline}
+                    value={form.values.deadline ? new Date(form.values.deadline) : null}
                     onChange={(event) => (
                         event ? form.setFieldValue('deadline', event) : form.setFieldValue('deadline', null)
                     )}
@@ -101,7 +101,7 @@ export const TaskForm = ({initialValues, onSubmit, onCancel}: TaskFormProps) => 
                     style={{minWidth: isMobile ? 220 : 300}}
                     value={form.values.deadline ? new Date(new Date(form.values.deadline).getTime()) : null}
                     onChange={(event) => (
-                        event ? form.setFieldValue('deadline', form.values.deadline ? new Date(new Date(form.values.deadline).setTime(event.getTime())) : new Date(event)) : form.setFieldValue('deadline', null)
+                        event ? form.setFieldValue('deadline', form.values.deadline ? new Date(new Date(new Date(form.values.deadline).setHours(event.getHours())).setMinutes(event.getMinutes())) : new Date(event)) : form.setFieldValue('deadline', null)
                     )}
                     error={form.errors.deadline}
                     variant="default"

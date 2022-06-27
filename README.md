@@ -4,6 +4,7 @@
 Aplikacja typu TODO list do przechowywania i zarządzania listą zadań.
 
 ## 2. Wymagania funkcjonalne
+* Dodawanie/usuwanie kategorii
 * Dodawanie/modyfikacja/usuwanie zadań
 * Zadania zawierają obowiązkowo nazwę oraz opcjonalnie dowolne z następujących parametrów:
     * Opis szczegółowy z obsługą markdowna
@@ -39,4 +40,52 @@ Aplikacja typu TODO list do przechowywania i zarządzania listą zadań.
 
 ### 4. Użycie
 
-Opis użycia można znależć w odpowiednich plikach README dla backendu i frontendu.
+Instrukcję użycia można znależć w odpowiednich plikach README dla backendu i frontendu.
+Poniżej zrzuty ekranu z przykładowego wykorzystania
+
+1. Motyw aplikacji
+
+![](use-example/basic_dark_theme.png)
+*Ciemny motyw*
+
+![](use-example/basic_light_theme.png)
+*Jasny motyw*
+
+2. Menu boczne
+
+![](use-example/burger.png)
+*Boczne menu otwierane przyciskiem w lewym górnym rogu*
+
+3. Kategorie
+
+![](use-example/add_category_popover.png)
+*Dodawanie*
+
+![](use-example/delete_category_popover.png)
+*Usuwanie*
+
+![](use-example/after_delete_of_category.png)
+*Po usunięciu kategorii, zadania z nią powiązane tracą przypisanie do kategorii*
+
+![](use-example/category_studia.png)
+*Wyświetlenie zadań z wybranej kategorii
+
+4. Zadania
+
+![](use-example/add_task_popover.png)
+*Dodawanie zadania*
+
+![](use-example/set_task_done.png)
+*Oznaczenie zadania jako wykonane lub odwrotnie*
+
+![](use-example/sortowanie_po_kategorii_malejaco.png)
+*Przykład sortowania po kategorii malejąco*
+
+![](use-example/sortowanie_po_kategorii_rosnąco.png)
+*Przykład sortowania po kategorii rosnąco*
+
+![](use-example/modify_task_popover.png)
+*Modyfikacja zadania*
+
+![](use-example/task_details.png)
+*Wyświetlenie opisu zadania*

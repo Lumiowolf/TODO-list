@@ -160,7 +160,13 @@ const Main = ({selectedCategory}: MainProps) => {
                                     {task.categoryName}
                                 </td>
                                 <td>
-                                    {task.deadline ? new Date(task.deadline).toLocaleString() : null}
+                                    {task.deadline ? new Date(task.deadline).toLocaleString(undefined, {
+                                        year: "numeric",
+                                        month: "2-digit",
+                                        day: "2-digit",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                    }) : null}
                                 </td>
                                 <td>
                                     {task.priority}
